@@ -56,13 +56,14 @@ sharp on every screen, and honest.
 | 01 | Creative & Operations (hero) | `#top` |
 | 02 | About | `#about` |
 | 03 | Experience | `#experience` |
-| 04 | Selected work | `#work` |
-| 05 | Direction | `#why-management` |
-| 06 | Strengths | `#strengths` |
-| 07 | Contact | `#contact` |
+| 04 | Skills & tools | `#skills` |
+| 05 | Selected work | `#work` |
+| 06 | Direction | `#why-management` |
+| 07 | Strengths | `#strengths` |
+| 08 | Contact | `#contact` |
 
-Sticky navigation: About · Experience · Work · Why Management · Contact, with a
-hamburger menu and slide-in panel below 1080px.
+Sticky navigation: About · Experience · Skills · Work · Why Management · Contact,
+with a hamburger menu and slide-in panel below 1080px.
 
 ---
 
@@ -73,6 +74,8 @@ Open **`index.html`** in any text editor.
 - **Timeline entry** — duplicate one `<li class="timeline-item">`. Structure:
   `dates → role → organisation → description → bullet points`.
 - **Work card** — duplicate one `<li class="work-card">`.
+- **Skill group** — duplicate one `<div class="skill-group">`, then add or remove
+  `<li>` items inside its `.skill-tags` list.
 - **Strength** — duplicate one `<li class="strength">`.
 - **Toolbelt** — add or remove `<li>` items inside `.toolbelt-list`.
 - **Section numbers** — live in the `.num` span inside each `.section-eyebrow`,

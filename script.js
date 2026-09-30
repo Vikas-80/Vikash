@@ -267,6 +267,33 @@
   }
 
   /* ---------------------------------------------------------
+     7. Back to top
+     The #top target is a position:fixed header, so browsers
+     treat it as already in view and never scroll. Intercept
+     the click and scroll explicitly instead.
+     --------------------------------------------------------- */
+  function initBackToTop() {
+    var links = $$('a[href="#top"]');
+    if (!links.length) return;
+
+    var landing = $('.brand') || $('.site-header');
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // No explicit behavior: this defers to the CSS scroll-behavior
+        // on <html>, which is already reduced-motion aware.
+        window.scrollTo({ top: 0, left: 0 });
+
+        if (landing && typeof landing.focus === 'function') {
+          landing.focus({ preventScroll: true });
+        }
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------
      Boot
      --------------------------------------------------------- */
   function init() {
@@ -276,6 +303,7 @@
     safe(initReveal);
     safe(initCopy);
     safe(initYear);
+    safe(initBackToTop);
   }
 
   if (document.readyState === 'loading') {

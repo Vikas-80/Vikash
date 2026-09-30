@@ -6,8 +6,8 @@ independent artist management.
 
 **Live:** <https://vikas-80.github.io/Vikash/>
 
-A single static page. No backend, no build step, no frameworks, no images, no CV
-file, no social links. HTML + hand-written CSS + vanilla JavaScript only.
+A single static page. No backend, no build step, no frameworks, no CV file, no social
+links, and one optional image. HTML + hand-written CSS + vanilla JavaScript only.
 
 ---
 
@@ -44,8 +44,10 @@ Vikash/
     └── favicon.svg # Minimal "VS" monogram
 ```
 
-No image folder by design: the layout is typographic, which keeps the page fast,
-sharp on every screen, and honest.
+One optional image: drop a portrait at `assets/profile/profile.jpg` (portrait crop,
+roughly 4:5) and the hero plate fades it in. Until that file exists the plate keeps a
+typographic fallback — monogram plus name — so the layout is never broken and the rest
+of the page stays entirely text-based, which keeps it fast and sharp on every screen.
 
 ---
 
@@ -135,7 +137,8 @@ If the repository is ever renamed or moved, update the absolute URLs in
 **Performance** — no frameworks, libraries, trackers, cookies or API calls. One
 preconnected Google Fonts stylesheet with `display=swap`. `IntersectionObserver`
 reveals so nothing animates below the fold. Scroll handling is
-`requestAnimationFrame`-throttled and passive. Zero images to download.
+`requestAnimationFrame`-throttled and passive. The only image is the optional hero
+portrait, which is lazy-free but hidden behind a text fallback so it never blocks paint.
 
 **Accessibility** — semantic landmarks, one `h1`, ordered heading levels,
 skip-to-content link, visible accent focus ring on every control. Mobile menu has

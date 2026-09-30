@@ -294,6 +294,39 @@
   }
 
   /* ---------------------------------------------------------
+     Portrait frame
+
+     The plate ships with a typographic fallback. If the photo is
+     absent the fallback stays visible; once it loads we swap to it.
+     --------------------------------------------------------- */
+  function initPortrait() {
+    var frames = $$('[data-portrait]');
+    if (!frames.length) return;
+
+    frames.forEach(function (frame) {
+      var img = $('img', frame);
+      if (!img) return;
+
+      var reveal = function () { frame.classList.add('is-loaded'); };
+
+      img.addEventListener('error', function () {
+        frame.classList.add('is-missing');
+      });
+
+      img.addEventListener('load', reveal);
+
+      // Cover cached, already-failed, and not-yet-started requests.
+      if (img.complete) {
+        if (img.naturalWidth > 0) {
+          reveal();
+        } else {
+          frame.classList.add('is-missing');
+        }
+      }
+    });
+  }
+
+  /* ---------------------------------------------------------
      Boot
      --------------------------------------------------------- */
   function init() {
@@ -304,6 +337,7 @@
     safe(initCopy);
     safe(initYear);
     safe(initBackToTop);
+    safe(initPortrait);
   }
 
   if (document.readyState === 'loading') {

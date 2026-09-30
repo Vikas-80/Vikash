@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vikas-80.github.io/Vikash/sitemap.xml
